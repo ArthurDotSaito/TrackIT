@@ -2,7 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import styled from 'styled-components'
 import React from "react";
 import GlobalStyle from "./components/GlobalStyles";
-import Login from "./components/pages/Login";
+import Login from "./components/pages/SingInPages/Login";
+import SignUp from "./components/pages/SingInPages/SignUp";
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
         <GlobalStyle></GlobalStyle>
           <Routes>
             <Route path="/" element={<Login></Login>}/>
+            <Route path="/signUp" element={<SignUp></SignUp>}/>
           </Routes>
       </AppMainContainer>
     </BrowserRouter>
