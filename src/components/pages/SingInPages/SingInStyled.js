@@ -20,6 +20,18 @@ export const MainContainer = styled.main`
         display: flex;
         justify-content: center;
     }
+    p{
+        width: 100%;
+        font-family: "Lexend Deca", sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+        text-decoration: underline;
+        color: #52B6FF;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 `
 export const FieldArea = styled.form`
     width: 80%;

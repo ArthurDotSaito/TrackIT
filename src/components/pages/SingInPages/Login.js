@@ -8,19 +8,16 @@ import { Input, Button, LoginFieldArea, LoginMainContainer, MainContainer,FieldA
 const Login = () => {
     const navigate = useNavigate();
     const [enableLogin, setEnableLogin] = React.useState(false)
-    const [loginDataEmail, setLoginDataEmail] = React.useState("");
-    const [loginDataPassword, setLoginDataPassword] = React.useState("");
-    const [loginData, setLoginData] = React.useState({
-        email:loginDataEmail,
-        password:loginDataPassword
-    })
+    const [email, setEmail] = React.useState("");
+    const [password, setPassword] = React.useState("");
     
     function login(event){
         event.preventDefault();
         setEnableLogin(true);
-        console.log("Olá Marilene!")
+        const loginData = {email:email, password:password}
         const loginPromise = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login", loginData);
         loginPromise.then((response) => {
+            alert("Olá");
             navigate("/Hoje");
         })
         loginPromise.catch((response) =>{
@@ -35,22 +32,21 @@ const Login = () => {
             <FieldArea onSubmit={login}>
                 <Input
                     type="email"
-                    value={loginDataEmail}
+                    value={email}
                     placeholder="Email"
                     disabled={enableLogin}
-                    onChange={(event) => setLoginDataEmail(event.target.value)}
+                    onChange={(event) => setEmail(event.target.value)}
                     required>
                 </Input>
                 <Input
                     type="password"
-                    value={loginDataPassword}
+                    value={password}
                     placeholder="Password"
                     disabled={enableLogin}
-                    onChange={(event) => setLoginDataPassword(event.target.value)}
+                    onChange={(event) => setPassword(event.target.value)}
                     required>
                 </Input>
-            </FieldArea>
-            <Button
+                <Button
                 type='submit'
                 disabled={enableLogin}>{(!enableLogin) ? "Entrar" :
                 <ThreeDots
@@ -58,7 +54,8 @@ const Login = () => {
                     height="13"
                     radius="9"
                     color='FFFFFF'></ThreeDots>}
-            </Button>
+                </Button>
+            </FieldArea>
             <Link to='/signUp'>
                 <Button>Não tem uma conta? Cadastre-se!</Button>
             </Link>

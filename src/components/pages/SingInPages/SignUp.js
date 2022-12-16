@@ -2,7 +2,7 @@ import axios from "axios"
 import React from "react"
 import styled from "styled-components"
 import {useNavigate, Link} from 'react-router-dom'
-import { FieldArea, MainContainer,Input } from "./SingInStyled"
+import { FieldArea, MainContainer,Input, Button } from "./SingInStyled"
 
 const SignUp = () =>{
     const navigate = useNavigate();
@@ -11,10 +11,26 @@ const SignUp = () =>{
     const [name, setName] = React.useState("");
     const [image, setImage] = React.useState("");
 
+    function createAccount(e){
+        e.preventDefault();
+        const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up";
+        const accountDetails = {email:email, name:name, image:image, password:password};
+        const accountPromise = axios.post(URL, accountDetails);
+        accountPromise.then((response) =>{
+            alert("Cadastro realizado!");
+            navigate("/");
+        })
+        accountPromise.catch((error) =>{
+            alert(error.response.data.message)
+        })
+        console.log(accountDetails);
+    }
+
+
     return(
         <MainContainer>
             <h1>Track It</h1>
-            <FieldArea>
+            <FieldArea onSubmit={createAccount}>
             <Input
                     type="email"
                     value={email}
@@ -47,7 +63,13 @@ const SignUp = () =>{
                     onChange={(event) => setImage(event.target.value)}
                     required>
                 </Input>
+                <Button
+                type="submit"
+                >Cadastrar</Button>
             </FieldArea>
+            <Link to="/">
+                <p>Já tem uma conta? Faça Login!</p>
+            </Link>
         </MainContainer>
     )
 }
