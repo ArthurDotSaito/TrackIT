@@ -10,12 +10,10 @@ function App() {
   return(
     <BrowserRouter>
       <AppMainContainer>
-        <GlobalStyle> 
+        <GlobalStyle></GlobalStyle>
           <Routes>
             <Route path="/" element={<Login></Login>}/>
-
           </Routes>
-        </GlobalStyle>
       </AppMainContainer>
     </BrowserRouter>
   )
@@ -23,6 +21,7 @@ function App() {
 }
 
 const AppMainContainer = styled.main`
+  width: 100%;
 `
 
 export default App;
