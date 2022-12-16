@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import styled from 'styled-components'
+import React from "react";
+import GlobalStyle from "./components/GlobalStyles";
+import Login from "./components/pages/Login";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+  return(
+    <BrowserRouter>
+      <AppMainContainer>
+        <GlobalStyle> 
+          <Routes>
+            <Route path="/" element={<Login></Login>}/>
+
+          </Routes>
+        </GlobalStyle>
+      </AppMainContainer>
+    </BrowserRouter>
+  )
+
 }
+
+const AppMainContainer = styled.main`
+`
 
 export default App;
