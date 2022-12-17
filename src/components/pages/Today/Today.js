@@ -16,7 +16,6 @@ const Today = () =>{
             <FooterMenu/>
             <h2>{WEEK[day]}, {date.toLocaleDateString()}</h2>
         </TodayContainer>
-        
     )
 }
 

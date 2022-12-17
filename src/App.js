@@ -6,6 +6,7 @@ import Login from "./components/pages/SingInPages/Login";
 import SignUp from "./components/pages/SingInPages/SignUp";
 import Context from "./components/Context"
 import Today from "./components/pages/Today/Today";
+import Habits from "./components/pages/Habits/Habits";
 
 function App() {
   const [userData,setUserData] = React.useState({});
@@ -21,6 +22,7 @@ function App() {
               <Route path="/" element={<Login setUserData={setUserData}></Login>}/>
               <Route path="/signUp" element={<SignUp></SignUp>}/>
               <Route path="/today" element={<Today></Today>}/>
+              <Route path="habits" element={<Habits></Habits>}/>
           </Routes>
         </Context.Provider>
       </AppMainContainer>

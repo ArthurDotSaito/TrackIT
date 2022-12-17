@@ -29,6 +29,7 @@ const FooterContainer=styled.footer`
     background: #FFFFFF;
     box-sizing: border-box;
     padding: 0px 30px;
+    cursor: pointer;
 `
 
 const UL = styled.p`
@@ -37,6 +38,7 @@ const UL = styled.p`
     font-size: 18px;
     line-height: 22px;
     color: #52B6FF;
+    cursor: pointer;
 `
 
 const CircleBar = styled.input`
@@ -50,6 +52,7 @@ const CircleBar = styled.input`
     line-height: 22px;
     color: #FFFFFF;
     margin-bottom: 35px;
+    cursor: pointer;
 `
 
 export default FooterMenu
