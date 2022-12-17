@@ -5,6 +5,7 @@ import GlobalStyle from "./components/GlobalStyles";
 import Login from "./components/pages/SingInPages/Login";
 import SignUp from "./components/pages/SingInPages/SignUp";
 import Context from "./components/Context"
+import Today from "./components/pages/Today/Today";
 
 function App() {
   const [userData,setUserData] = React.useState({});
@@ -19,7 +20,7 @@ function App() {
           <Routes>
               <Route path="/" element={<Login setUserData={setUserData}></Login>}/>
               <Route path="/signUp" element={<SignUp></SignUp>}/>
-              
+              <Route path="/today" element={<Today></Today>}/>
           </Routes>
         </Context.Provider>
       </AppMainContainer>

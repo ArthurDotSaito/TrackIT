@@ -8,7 +8,7 @@ const Header = () => {
     return(
         <HeaderContainer>
             <Link to = "/">
-                <title>Track It</title>
+                <h1>Track It</h1>
             </Link>
             <img src={userData.image} alt="profile"></img>
         </HeaderContainer>
@@ -25,13 +25,14 @@ const HeaderContainer = styled.main`
     justify-content: space-between;
     background-color: #126BA5;
     box-shadow: 0px 4px 4px rgba(0,0,0,0.15);
-    title{
+    h1{
         font-family: "Playball";
         font-weight: 400;
         font-size: 39px;
         line-height: 49px;
         text-align: center;
         color: #FFFFFF;
+        margin-left: 10px ;
     }
     img{
         width: 50px;
@@ -39,6 +40,7 @@ const HeaderContainer = styled.main`
         border-radius: 50%;
         box-sizing: border-box;
         border: 1px solid black;
+        margin-right: 10px;
     }
 `
 

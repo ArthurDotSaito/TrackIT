@@ -18,7 +18,7 @@ const Login = ({setUserData}) => {
         const loginPromise = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login", loginData);
         loginPromise.then((response) => {
             setUserData(response.data);
-            navigate("/Hoje");
+            navigate("/Today");
         })
         loginPromise.catch((response) =>{
             alert(response.response.data.message);
