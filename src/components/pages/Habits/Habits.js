@@ -4,12 +4,20 @@ import Context from "../../Context";
 import React, { useEffect,useState,useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import AddHabits from "./AddHabits.js";
 
 const Habits = () =>{
-    const {user} = useContext(Context);
+    const {userData} = useContext(Context);
     const navigate = useNavigate();
     const [habitList, setHabitList] = React.useState([]);
-    const [newHabit, setNewHabit] = React.useState(false);
+    const [newHabit, setNewHabit] = React.useState(true);
+
+/*     useEffect(() =>{
+        if(!userData.token){
+            alert("Cadastre-se ou faça o Login!")
+            navigate("/");
+        }
+    }) */
 
 
     return(
@@ -25,6 +33,11 @@ const Habits = () =>{
                         >
                     </AddHabitButton>
                 </HeaderMenu>
+                <AddHabits
+                    setHabitList={setHabitList}
+                    newHabit={newHabit}
+                    setNewHabit={setNewHabit}>
+                </AddHabits>
 
             </HabitPageContainer>
         </>
@@ -43,8 +56,6 @@ const HabitPageContainer=styled.main`
     flex-direction: column;
 
 `
-
-
 const HeaderMenu=styled.section`
   display: flex;
   width: 100%;
@@ -63,7 +74,6 @@ const HeaderMenu=styled.section`
     margin: 20px 20px;
   }
 `
-
 const AddHabitButton=styled.input`
     width: 40px;
     height: 40px;
