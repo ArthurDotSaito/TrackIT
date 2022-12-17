@@ -19,6 +19,7 @@ function App() {
           <Routes>
               <Route path="/" element={<Login setUserData={setUserData}></Login>}/>
               <Route path="/signUp" element={<SignUp></SignUp>}/>
+              
           </Routes>
         </Context.Provider>
       </AppMainContainer>
