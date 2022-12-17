@@ -5,7 +5,7 @@ import {ThreeDots } from 'react-loader-spinner'
 import {useNavigate, Link} from 'react-router-dom'
 import { Input, Button, LoginFieldArea, LoginMainContainer, MainContainer,FieldArea } from './SingInStyled';
 
-const Login = () => {
+const Login = ({setUserData}) => {
     const navigate = useNavigate();
     const [enableLogin, setEnableLogin] = React.useState(false)
     const [email, setEmail] = React.useState("");
@@ -17,7 +17,7 @@ const Login = () => {
         const loginData = {email:email, password:password}
         const loginPromise = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login", loginData);
         loginPromise.then((response) => {
-            alert("Olá");
+            setUserData(response.data);
             navigate("/Hoje");
         })
         loginPromise.catch((response) =>{
