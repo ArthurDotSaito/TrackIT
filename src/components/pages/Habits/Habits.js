@@ -1,16 +1,17 @@
 import axios from "axios";
 import Header from "../../Header";
-import Context from "../../Context";
+import { UserDataContext } from "../../UseDataContext";
 import React, { useEffect,useState,useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import AddHabits from "./AddHabits.js";
 
 const Habits = () =>{
-    const {userData} = useContext(Context);
+    const {userData} = useContext(UserDataContext);
     const navigate = useNavigate();
     const [habitList, setHabitList] = React.useState([]);
     const [newHabit, setNewHabit] = React.useState(true);
+    console.log(userData);
 
 /*     useEffect(() =>{
         if(!userData.token){

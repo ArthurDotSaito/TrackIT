@@ -1,7 +1,7 @@
 import axios from "axios";
 import styled from "styled-components";
 import React, { useContext } from "react";
-import Context from "../../Context";
+import Context from "../../UseDataContext";
 import Header from "../../Header";
 import FooterMenu from "../../FooterMenu";
 

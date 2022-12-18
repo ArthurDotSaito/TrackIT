@@ -1,10 +1,10 @@
-import Context from "./Context";
+import { UserDataContext } from "./UseDataContext";
 import { useContext } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-    const userData = useContext(Context);
+    const userData = useContext(UserDataContext);
     return(
         <HeaderContainer>
             <Link to = "/">
