@@ -1,6 +1,6 @@
 import axios from "axios";
 import Header from "../../Header";
-import Context from "../../UseDataContext";
+import Context from "../../UserDataContext";
 import React, { useEffect,useState,useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";

@@ -1,14 +1,16 @@
 import axios from "axios";
 import styled from "styled-components";
 import React, { useContext } from "react";
-import Context from "../../UseDataContext";
 import Header from "../../Header";
 import FooterMenu from "../../FooterMenu";
+import { UserDataContext } from "../../UserDataContext";
 
 const Today = () =>{
     const WEEK = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sabado"];
     const date = new Date();
     const day = date.getDay();
+    const user = useContext(UserDataContext);
+    console.log(user);
 
     return(
         <TodayContainer>

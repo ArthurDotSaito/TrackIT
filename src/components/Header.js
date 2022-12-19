@@ -1,4 +1,4 @@
-import { UserDataContext } from "./UseDataContext";
+import { UserDataContext } from "./UserDataContext";
 import { useContext } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";

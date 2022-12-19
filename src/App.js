@@ -4,9 +4,10 @@ import React from "react";
 import GlobalStyle from "./components/GlobalStyles";
 import Login from "./components/pages/SingInPages/Login";
 import SignUp from "./components/pages/SingInPages/SignUp";
-import UserLoginProvider from "./components/UseDataContext"
+import UserLoginProvider from "./components/UserDataContext"
 import Today from "./components/pages/Today/Today";
 import Habits from "./components/pages/Habits/Habits";
+import { UserDataContext } from "./components/UserDataContext";
 
 function App() {
   const [userData,setUserData] = React.useState({});
@@ -18,14 +19,14 @@ function App() {
     <BrowserRouter>
       <AppMainContainer>
         <GlobalStyle></GlobalStyle>
-        <UserLoginProvider>
+        <UserDataContext.Provider value={userData}>
           <Routes>
               <Route path="/" element={<Login setUserData={setUserData}></Login>}/>
               <Route path="/signUp" element={<SignUp></SignUp>}/>
-              <Route path="/today" element={<Today></Today>}/>
-              <Route path="habits" element={<Habits></Habits>}/>
+              <Route path="/today" element={<Today setUserData={setUserData}></Today>}/>
+              <Route path="/habits" element={<Habits></Habits>}/>
           </Routes>
-        </UserLoginProvider>
+        </UserDataContext.Provider>
       </AppMainContainer>
     </BrowserRouter>
   )

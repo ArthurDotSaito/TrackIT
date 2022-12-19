@@ -1,6 +1,6 @@
 import axios from "axios";
 import Header from "../../Header";
-import { UserDataContext } from "../../UseDataContext";
+import { UserDataContext } from "../../UserDataContext";
 import React, { useEffect,useState,useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -9,7 +9,7 @@ import WeekDayButtons from "./WeekDayButtons";
 const AddHabits = ({setHabitList, newHabit, setNewHabit}) =>{
     const [habitsRequest, setHabitsRequest] = React.useState({name:"", days:[]});
     const [enableEvent, setEnableEvent] = React.useState(null);
-    const {userData}=useContext(UserDataContext);
+    const userData = useContext(UserDataContext);
     console.log(userData);
     function keyboardEvent(e){
         setHabitsRequest({...habitsRequest, name:e})
@@ -33,7 +33,6 @@ const AddHabits = ({setHabitList, newHabit, setNewHabit}) =>{
         });
         return request;
       }
-
 
 
     function sendRequestAddHabit(e){
