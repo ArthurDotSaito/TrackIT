@@ -35,7 +35,6 @@ const Habits = () =>{
         }
     }) 
 
-
     return(
         <>
             <Header></Header>
