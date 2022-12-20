@@ -5,19 +5,35 @@ import React, { useEffect,useState,useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import AddHabits from "./AddHabits.js";
+import ShowHabits from "./ShowHabits";
 
 const Habits = () =>{
     const user = useContext(UserDataContext);
+    const navigate = useNavigate();
     const [habitList, setHabitList] = React.useState([]);
     const [newHabit, setNewHabit] = React.useState(true);
     console.log(user);
 
-/*     useEffect(() =>{
-        if(!userData.token){
+    function getHabits(token) {
+        const promise = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        return promise;
+      }
+
+      function updateHabits(setListHabit, token) {
+        const promise = getHabits(token);
+        promise.then((response) => setListHabit(response.data));
+      }
+
+     useEffect(() =>{
+        if(!user.token){
             alert("Cadastre-se ou faça o Login!")
             navigate("/");
+        }else{
+            updateHabits(setHabitList, user.token)
         }
-    }) */
+    }) 
 
 
     return(
@@ -38,6 +54,14 @@ const Habits = () =>{
                     newHabit={newHabit}
                     setNewHabit={setNewHabit}>
                 </AddHabits>
+                {habitList.length == 0 ?(
+                    <p>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para
+                    começar a trackear!</p>
+                ) : (
+                    <ShowHabits habitList={habitList} setHabitList={setHabitList}>
+
+                    </ShowHabits>
+                )}
 
             </HabitPageContainer>
         </>
@@ -54,6 +78,12 @@ const HabitPageContainer=styled.main`
     display: flex;
     align-items: center;
     flex-direction: column;
+    p{
+        margin-top: 28px;
+        font-size: 18px;
+        line-height: 22px;
+        color: #666666;
+    }
 
 `
 const HeaderMenu=styled.section`

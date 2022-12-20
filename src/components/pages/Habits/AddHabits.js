@@ -16,31 +16,31 @@ const AddHabits = ({setHabitList, newHabit, setNewHabit}) =>{
     }
 
     function getHabits(token) {
-        const request = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", {
+        const promise = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", {
           headers: { Authorization: `Bearer ${token}` },
         });
-        return request;
+        return promise;
       }
 
-      function updateHabits(setListHabit, token) {
-        const request = getHabits(token);
-        request.then((response) => setListHabit(response.data));
+      function updateHabits(setHabitList, token) {
+        const promise = getHabits(token);
+        promise.then((response) => setHabitList(response.data));
       }
 
       function saveHabits(token, habit) {
-        const request = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit//habits", habit, {
+        const promise = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit//habits", habit, {
           headers: { Authorization: `Bearer ${token}` },
         });
-        return request;
+        return promise;
       }
 
-
+    
     function sendRequestAddHabit(e){
         e.preventDefault();
         const getHabitsRequest = saveHabits(userData.token, habitsRequest);
         setEnableEvent(getHabitsRequest);
         getHabitsRequest.then(()=>{
-            updateHabits(setHabitsRequest, userData.token);
+            updateHabits(setHabitList, userData.token);
             setEnableEvent(null);
             setHabitsRequest({name:"", days:[]});
             setNewHabit(!newHabit);
@@ -51,7 +51,8 @@ const AddHabits = ({setHabitList, newHabit, setNewHabit}) =>{
         })
 
     }
-    
+    console.log(habitsRequest);
+  
     return(
         <HabitForm onSubmit={sendRequestAddHabit}> 
             <TextInput
@@ -65,7 +66,7 @@ const AddHabits = ({setHabitList, newHabit, setNewHabit}) =>{
             <WeekDayButtons
                 habitsRequest={habitsRequest}
                 setHabitsRequest={setHabitsRequest}
-                possibleToClick = {enableEvent !== null ? true: false}
+                possibleToClick = {enableEvent !== null ? false: true}
                 >
             </WeekDayButtons>
             <ButtonContainer>
@@ -100,7 +101,6 @@ const HabitForm=styled.form`
     align-items: flex-start;
     margin-bottom: 20px;
 `
-
 const TextInput = styled.input`
     box-sizing: border-box;
     width: 100%;
@@ -116,14 +116,12 @@ const TextInput = styled.input`
         color: #DBDBDB;
     }
 `
-
 const ButtonContainer = styled.section`
     box-sizing: border-box;
     width: 100%;
     display: flex;
     justify-content: flex-end;
 `
-
 const SubmitButton = styled.input`
     box-sizing: border-box;
     margin: 0 5px;

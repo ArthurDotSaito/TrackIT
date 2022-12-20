@@ -13,29 +13,33 @@ const WeekDayButtons = ({habitsRequest, setHabitsRequest, possibleToClick}) =>{
         {id: 3, day:"Q"},
         {id: 4, day:"Q"},
         {id: 5, day:"S"},
-        {id: 6, day:"S"}
-    ]
+        {id: 6, day:"S"},
+    ];
 
-    function click(e){
-        const dayList = habitsRequest.days;
-        if (dayList.includes(e)) {
-          const filterDays = dayList.filter((days) => days !== e);
+    function click(id){
+        const days = habitsRequest.days;
+        if (days.includes(id)) {
+          const filterDays = days.filter((days) => days !== id);
           setHabitsRequest({ ...habitsRequest, days: filterDays });
         } else {
-          setHabitsRequest({ ...habitsRequest, days: [...dayList, e] });
+          setHabitsRequest({ ...habitsRequest, days: [...days, id] });
         }
     }
 
+    console.log(habitsRequest.days);
+
     return(
         <WeekDayContainer>
-                {DAYS.map((e) => <DaysButton
-                key={e.id}
-                type='button'
-                id={e.id}
-                value={e.day}
-                days={habitsRequest.days}
-                onClick={() => (possibleToClick ? click(e.id):false)}/>
-                )}
+                {DAYS.map((e) => (
+                <DaysButton
+                  key={e.id}
+                  type='button'
+                  id={e.id}
+                  onClick={() => (possibleToClick ? click(e.id) : false)}
+                  days={habitsRequest.days}>
+                    {e.day}
+                </DaysButton>
+                ))}
 
         </WeekDayContainer>
 
@@ -48,7 +52,7 @@ const WeekDayContainer=styled.section`
     align-items: center;
 `
 
-const DaysButton = styled.input`
+const DaysButton = styled.button`
   width: 30px;
   height: 30px;
   border: 1px solid #d5d5d5;
